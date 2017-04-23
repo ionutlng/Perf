@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>
-		Perfect Place Finder
-	</title>
-</head>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+			<title>	Perfect Place Finder</title>
+			<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css" >
+       	    <link rel="stylesheet" href="assets/css/style.css">
+	</head>
 	
-<body>
+	<body>
+		<center><h1>Perfect Place Finder</h1></center>
+		<div id="map"></div>
+		 <script>
+              function initMap() 
+              { mapCenter = {lat: 40.730610, lng: -73.935242};
+               	 var marker = new google.maps.Marker({
+                         position: mapCenter,
+                         map: map
+                     });
+                   var map = new google.maps.Map(document.getElementById('map'), {
+                                  zoom: 7,
+                                  center: mapCenter
+                    });
+					 var marker = new google.maps.Marker({
+                         position: mapCenter,
+                         map: map
+                     });
+			  }
+          </script>
+          <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap">  </script>
+ 	 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
+	</body>
 
-</body>
 </html>
