@@ -54,36 +54,46 @@
                 var infoContent3 = "<p><b>Vanzare | 200,000 ron</b></p> <p>207 Mitchell St SW, Atlanta, GA 30303</p>";
                 var infoContent4 = "<p><b>Vanzare | 350,000 ron</b></p> <p>110 NW 67th St, Miami, FL 33150</p>";
                 var infoContent5 = "<p><b>Inchiriere | 500 ron</b></p> <p>1411 NW 6th St, Oklahoma City, OK 73106</p>";
-                var infoWindow = new google.maps.InfoWindow({
-                         content: infoContent
-                     });
-                var infoWindow2 = new google.maps.InfoWindow({
-                         content: infoContent2
-                     });
-                var infoWindow3 = new google.maps.InfoWindow({
-                         content: infoContent3
-                     });
-                var infoWindow4 = new google.maps.InfoWindow({
-                         content: infoContent4
-                     });
-                var infoWindow5 = new google.maps.InfoWindow({
-                         content: infoContent5
-                     });
+                var infoWindow = new google.maps.InfoWindow();
                 marker.addListener('click', function () {
-                infoWindow.open(map, marker);
+                  infoWindow.close();
+                  infoWindow = new google.maps.InfoWindow({
+                    content: infoContent
                      });
+                infoWindow.open(map, marker);  
+                   });
+                
                 marker2.addListener('click', function () {
-                infoWindow2.open(map, marker2);
+                  infoWindow.close();
+                  infoWindow = new google.maps.InfoWindow({
+                    content: infoContent2
                      });
+                infoWindow.open(map, marker2);
+                   });
+                
                 marker3.addListener('click', function () {
-                infoWindow3.open(map, marker3);
+                  infoWindow.close();
+                  infoWindow = new google.maps.InfoWindow({
+                    content: infoContent3
                      });
+                infoWindow.open(map, marker3);
+                   });
+                
                 marker4.addListener('click', function () {
-                infoWindow4.open(map, marker4);
-                     });  
+                  infoWindow.close();
+                  infoWindow = new google.maps.InfoWindow({
+                    content: infoContent4
+                     });
+                infoWindow.open(map, marker4);
+                   });
+                
                 marker5.addListener('click', function () {
-                infoWindow5.open(map, marker5);
-                     });  
+                  infoWindow.close();
+                  infoWindow = new google.maps.InfoWindow({
+                    content: infoContent5
+                     });
+                infoWindow.open(map, marker5);
+                   });  
              }
           </script>
 	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap">  </script>
