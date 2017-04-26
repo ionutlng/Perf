@@ -24,7 +24,6 @@ body {
     width: 0;
     height: 100%;
     margin-left: -250px;
-   /* margin-top : 200px;*/
     overflow-y: auto;
     background: #070537;
     -webkit-transition: all 0.5s ease;
@@ -51,6 +50,9 @@ body {
 #strat{
     
     color: wheat;
+    text-align: center;
+    margin: 40px 10px 30px 10px ;
+
 }
 
 #map
@@ -90,7 +92,7 @@ form
 
 #conectare 
 {
-    margin: 120px 0px 10px 20px ;
+    margin: 230px 0px 10px 20px ;
     color: wheat;
     font-weight: bold;
 }
