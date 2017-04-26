@@ -193,19 +193,56 @@
                    }
               };
               for(city in markers)
-   {
-     var cityCircle = new google.maps.Circle({
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#FF0000',
-      fillOpacity: 0.35,
-      map: map,
-      center: markers[city].center,
-      radius: Math.sqrt(markers[city].size) * 2500
-    });
-   }
-             }
+	   {
+	     var cityCircle = new google.maps.Circle({
+	      strokeColor: '#FF0000',
+	      strokeOpacity: 0.8,
+	      strokeWeight: 2,
+	      fillColor: '#FF0000',
+	      fillOpacity: 0.35,
+	      map: map,
+	      center: markers[city].center,
+	      radius: Math.sqrt(markers[city].size) * 2500
+	    });
+	   }
+                 var puncte={
+                a : {
+                  center : {lat: 40.530610, lng: -74.535242},
+                  size : 300
+                },
+                b : {
+                  center : {lat: 35.143976,lng: -97.133046},
+                  size : 550
+                },
+                c : {
+                  center :{lat: 25.950550,lng: -80.547038},
+                  size : 700
+                },
+                d : {
+                  center : {lat: 33.969594,lng: -117.973914},
+                  size : 200
+                },
+                e : {
+                  center :{lat: 33.353273,lng: -83.992765},
+                  size : 300
+                }
+            }    
+              
+              for(city in puncte)
+              {
+                var cityCircle = new google.maps.Circle({
+                strokeColor: '#0000e6',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#0000e6',
+                fillOpacity: 0.35,
+                map: map,
+                center: puncte[city].center,
+                radius: Math.sqrt(puncte[city].size) * 2500
+              });
+            }
+
+	      }
           </script>
 	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap">  </script>
  	 
