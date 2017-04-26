@@ -79,10 +79,9 @@ form
 
 #titlu {
     color:#070537;
-    text-align: center;
-    position: relative;
-    padding: 0px 0px 0px 0px ;
-    /*float : right;*/
+    font-style: italic;
+    font-family: 'Droid serif', serif;
+    text-align: right;
 }
 
 #menu {
