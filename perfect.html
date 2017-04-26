@@ -2,18 +2,82 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    		<meta name="keywords" context="place,finder,apartments,rent,sell">
+    		<meta name="description" content="Apartments and houses for sale or rental">
+    		<meta name="author" content = "Lungeanu Ionut, Patriche Giulio, Prodan Marius">
 			<title>	Perfect Place Finder</title>
 			<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css" >
        	    		<link rel="stylesheet" href="assets/css/style.css">
 			<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-social.css" >
             		<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.css">
-            		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+            		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.c">
+			<link rel="stylesheet" href="assets/bootstrap/css/menu.css">
+
 	</head>
 	
 	<body>
-		<center><h1>Perfect Place Finder</h1></center>
-		<div id="map"></div>
+		 <div id="wrapper">
+
+        <div id="sidebar-wrapper">
+            <h3 id = "strat" > <center>Alegeti un strat </center> </h3>
+            <br></br>
+            
+               <form action = '#'>
+                    <p>
+                        <input type = "checkbox" />
+                            <label> Poluare atmosferica </label>
+                     </p>  
+                     <p>
+                        <input type = "checkbox" />
+                            <label> Poluare fonica </label>
+                     </p>
+                     <p>
+                        <input type = "checkbox" />
+                            <label> Nivelul de aglomeratie </label>
+                     </p>
+                     <p>
+                        <input type = "checkbox" />
+                            <label> Numarul de raportari de jafuri </label>
+                     </p>
+                     <p>
+                        <input type = "checkbox" />
+                            <label> Costul mediu de trai </label>
+                     </p>
+                     <p>
+                        <input type = "checkbox" />
+                            <label> Temperatura medie anuala </label>
+                     </p>        
+                     <p>
+                        <input type = "checkbox" />
+                            <label> Existenta parcarilor </label>
+                     </p>
+               </form>
+
+            <p id = "conectare">Conectare  </p>  
+
+            <div class = "btn-group btn-group-lg" role = "group" >
+                <a class="btn btn-social-icon btn-xs btn-instagram" ><span class="fa fa-instagram"></span></a>
+                <a class="btn btn-social-icon btn-xs btn-facebook" ><span class="fa fa-facebook"></span></a>
+                <a class="btn btn-social-icon btn-xs btn-yahoo" ><span class="fa fa-yahoo"></span></a>
+                <a class="btn btn-social-icon btn-xs btn-google"><span class="fa fa-google"></span></a>
+                <a class="btn btn-social-icon btn-xs btn-twitter"><span class="fa fa-twitter"></span></a>
+                <a class="btn btn-social-icon btn-xs btn-github"><span class="fa fa-github"></span></a>
+                <a class="btn btn-social-icon btn-xs btn-linkedin"><span class="fa fa-linkedin"></span></a>
+  
+            </div>  
+                  
+           
+        </div>
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+   	                      <div id = "menu" > <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a> </div>
+        	                    <div id = "titlu">  <h1>Perfect Place Finder</h1> </div> 		
+	<div id="map">	
 		 <script>
               function initMap() 
               { mapCenter = {lat: 40.730610, lng: -73.935242};
@@ -145,35 +209,24 @@
           </script>
 	  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap">  </script>
  	 
-		<!--Butoanele sociale -->
-  
-  <table style="height : 80px; border-radius: 5px; width: 30%; margin: 0px auto; float:none "> 
-     <tbody>
-         <tr>
-          <td>    
-            <div class = "btn-group btn-group-justified"  >   
-                <a class="btn btn-block btn-instagram"><span class="fa fa-instagram"></span> Instragram</a>
-                <a class="btn btn-block btn-facebook"><span class="fa fa-facebook"></span> Facebook</a>
-                <a class="btn btn-block btn-yahoo">  <span class="fa fa-yahoo"></span> Yahoo </a>
-                <a class="btn btn-block btn-google">  <span class="fa fa-google"></span> Google </a> 
-             </div> 
-           </td>
-         </tr>
-         <tr> 
-           <td>
-             <div class = "btn-group btn-group-lg" role = "group" >
-                <a class="btn btn-social-icon btn-xs btn-instagram" ><span class="fa fa-instagram"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-facebook" ><span class="fa fa-facebook"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-yahoo" ><span class="fa fa-yahoo"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-google"><span class="fa fa-google"></span></a>
+		</div>
+  </div>
+                </div>
             </div>
-          </td>
-        </tr>
-     </tbody>
-  </table>
+        </div>
+  
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-   
+   <script src="assets/bootstrap/js/jquery.js"></script>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 	</body>
 
 </html>
