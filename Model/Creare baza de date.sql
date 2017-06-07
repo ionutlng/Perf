@@ -1,8 +1,8 @@
-drop table Tranzactii;
-drop table Imobile;
-drop table Zona;
-drop sequence id_imobil;
-drop sequence id_zona;
+--drop table Tranzactii;
+--drop table Imobile;
+--drop table Zona;
+--drop sequence id_imobil;
+--drop sequence id_zona;
 --drop trigger id_imobil;
 --drop trigger id_zona;
 
@@ -20,6 +20,8 @@ CREATE TABLE IMOBILE
 CREATE TABLE ZONA
 (
   ID integer primary key,
+  z_lat integer not null,
+  z_long integer not null,
   PoluareF integer not null,
   PoluareA integer not null,
   Aglomeratie integer not null,
@@ -28,13 +30,12 @@ CREATE TABLE ZONA
   Cost integer not null,
   Parcari integer not null
 );
-/
 Create table TRANZACTII
 (
     ID_IMOBIL integer NOT NULL,
     ID_Zona integer not null,
-    Lat FLOAT(4) not null,
-    Lon FLOAT(4) not null,
+    t_Lat FLOAT(4) not null,
+    t_Lon FLOAT(4) not null,
     Constraint imobil
         FOREIGN KEY(ID_imobil)
         references IMOBILE(id),
