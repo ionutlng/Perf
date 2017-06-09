@@ -1,0 +1,11 @@
+.jumbotron 
+{
+    background-color: blue;
+}
+#map  
+{   
+    margin-left: auto;
+    margin-right: auto;
+    height:600px;
+    width: 80%;
+}

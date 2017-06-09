@@ -14,13 +14,15 @@
             	<link rel="stylesheet" href="assets/bootstrap/css/font-awesome.css">
             	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
 			    <link rel="stylesheet" href="assets/bootstrap/css/menu.css">
+                <link rel="icon" href="favicon.ico" >
                 
-                <script src = "assets\bootstrap\js\javaScript.js"> </script> 
+
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap"> </script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
                 <script src="assets/bootstrap/js/jquery.js"></script>
                 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-                 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap">  </script>   
+                <!--<script src="assets\bootstrap\js\javaScript.js"> </script>-->
 
 	</head>
 	
@@ -29,9 +31,7 @@
 
         <div id="sidebar-wrapper">
             <h3 id = "strat" > Alegeti un strat </h3>
-            
-            
-               <form action = '#'>
+                 <form action = '#'>
                     <p>
                         <input type = "checkbox" />
                             <label> Poluare atmosferica </label>
@@ -61,19 +61,44 @@
                             <label> Existenta parcarilor </label>
                      </p>
                </form>
+    
+    <br><br><br>
+        <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle btn-block" id="menu1" type="button" data-toggle="dropdown">Alegeti criteriul pentru filtrare
+                    <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pret</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Camere</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">alte criterii</a></li>
+                        </ul>
+        </div> 
+    <br>   
+      <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    min <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">0</a></li>
+                            <li><a href="#">1000</a></li>
+                            <li><a href="#">1500</a></li>
+                        </ul>            
+                        <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    max <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">1000</a></li>
+                            <li><a href="#">2500</a></li>
+                            <li><a href="#">3000</a></li>
+                        </ul>
+            </div>
+        </div>
 
-            <p id = "conectare">Conectare  </p>  
+    <script>
+    $(document).ready(function(){
+        $(".dropdown-toggle").dropdown();
+    });
+    </script>
 
-            <div class = "btn-group btn-group-lg" role = "group" >
-                <a class="btn btn-social-icon btn-xs btn-instagram" ><span class="fa fa-instagram"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-facebook" ><span class="fa fa-facebook"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-yahoo" ><span class="fa fa-yahoo"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-google"><span class="fa fa-google"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-twitter"><span class="fa fa-twitter"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-github"><span class="fa fa-github"></span></a>
-                <a class="btn btn-social-icon btn-xs btn-linkedin"><span class="fa fa-linkedin"></span></a>
-  
-            </div>  
                   
            
         </div>
@@ -223,8 +248,8 @@
              });
 	   }
       	   }
-          </script>
-	 
+         </script>
+	  <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffljar45pYydHeeOkuw9EHABPdGZvkhA&callback=initMap">  </script>-->
  	 
 		</div>
   			</div>
@@ -234,7 +259,12 @@
 		</div>
 		
 
-    
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 	</body>
 
 </html>
