@@ -1,6 +1,6 @@
 'use strict'
 var response;
-
+var response2;
 var infowindow;
 var contentString;
 
@@ -10,12 +10,12 @@ var cityCircle;
 var cityCircle2;
 var map;
 var i;
-
+var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 var ajaxRequest = {
-    type: 'POST',
+    type: 'GET',
     async: false,
     datatype: 'json',
-    url: '/Perf-master/model/api-orase-temperatura.php',
+    url: '/Perf-master/model/api-orase.php',
     success: function(data)
     {
         response = data;
@@ -25,20 +25,62 @@ var ajaxRequest = {
 $.ajax(ajaxRequest);
 
 var obj = JSON.parse(response);
-console.log(obj);
+
+var ajaxRequest = {
+    type: 'GET',
+    async: false,
+    datatype: 'json',
+    url: '/Perf-master/model/api-apartamente.php',
+    success: function(data)
+    {
+        response2 = data;
+    }
+};
+
+$.ajax(ajaxRequest);
+
+var obj2 = JSON.parse(response2);
+
 //	Initializes the map with a marker
 
 function initMap() {
 
-    var Oklahoma = {lat: 34.054376,lng: -118.2430};
+    var California = {lat: 37,lng: -120};
 	map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 6,
-		center: Oklahoma
+		zoom: 8,
+		center: California
 	});
+        
+search();
 
-	//SEARCH BAR
+for (var city in obj)
+	{
+        var center = {
+         lat: parseFloat(obj[city].lat),
+          lng: parseFloat(obj[city].log)
+        };
+     layer1(center,20);
+     layer2(center,30);
+     layer3(center,40);
+     layer4(center,50);
+}
+    for (var ap in obj2)
+	{
+        var center = {
+         lat: parseFloat(obj2[ap].lat),
+          lng: parseFloat(obj2[ap].lng)
+        };
+        var content = obj2[ap].address+obj2[ap].pret+obj2[ap].tip;
+    console.log(obj2[ap].address);
+          addMarker(center,obj2[ap].address,obj2[ap].pret,obj2[ap].tip);
 
-	 var card = document.getElementById('pac-card');
+}
+
+}
+function search(){
+    	//SEARCH BAR
+
+	    var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
         var types = document.getElementById('type-selector');
         var strictBounds = document.getElementById('strict-bounds-selector');
@@ -95,27 +137,10 @@ function initMap() {
           infowindowContent.children['place-address'].textContent = address;
           infowindow.open(map, marker);
         });
-
-        
-
-
-	// This event listener calls addMarker() when the map is clicked.
-
-    for (var city in obj)
-	{
-        var center = {
-         lat: parseFloat(obj[city].lat),
-          lng: parseFloat(obj[city].log)
-        };
-          addMarker(center,obj[city].name);
-     colorare(center,200);
-    }
-
-// addMarker()
 }
 
 // Adds a marker to the map and push to the array.
-function addMarker(location,content) {
+function addMarker(location,info1,info2,info3) {
     var index = markersArray.length;
 	var marker = new google.maps.Marker({
 		position: location,
@@ -123,14 +148,14 @@ function addMarker(location,content) {
 	});
 	markersArray.push(marker);
 	marker.addListener('click', function() {
-		clickMarkerEvent(index,content);
+		clickMarkerEvent(index,info1,info2,info3);
 	});
 }
 
 
 
 //listeners
-function clickMarkerEvent(index,info) {
+function clickMarkerEvent(index,info1,info2,info3) {
 
 	if (markersArray[index].getAnimation() !== null) {
 		markersArray[index].setAnimation(null);
@@ -142,11 +167,12 @@ function clickMarkerEvent(index,info) {
 	contentString = '<div id="content">' +
 	'<div id="siteNotice">' +
 	'</div>' +
-	'<h1 id="firstHeading" class="firstHeading">Marker Info</h1>' +
+	'<h1 id="firstHeading" class="firstHeading">Apartaments Info</h1>' +
 	'<div id="bodyContent">' +
 	'<b>Location:</b> <p>' + markersArray[index].getPosition() + '</p>' + 
-	'<b>Title: </b> <p>' + markersArray[index].getTitle() + '</p>' + 
-    '<b>Title:</b><p>' + info+'</p>'+
+    '<b>Title:</b><p>' + info3+'</p>'+
+    '<b>Adresa:</b><p>' + info1+'</p>'+
+    '<b>Pret:</b><p>' +info2+'</p>'+
 	'</div>';
 	
 	if(infowindow !== null && typeof infowindow !== 'undefined')
@@ -158,26 +184,55 @@ function clickMarkerEvent(index,info) {
 	});
 	infowindow.open(map, markersArray[index]);
 }
-function colorare(location,size)
+function layer1(location,size)
 {
     var cityCircle = new google.maps.Circle({
-strokeColor: '#FF0000',
-strokeOpacity: 0.8,
-strokeWeight: 2,
+strokeColor: '#FFF',
+strokeOpacity: 0.1,
+strokeWeight: 1,
 fillColor: '#FF0000',
-fillOpacity: 0.35,
+fillOpacity: 0.1,
 map: map,
 center: location,
-radius: Math.sqrt(size) * 2500
+radius: Math.sqrt(20) * 2500
 });
+}
+function layer2(location,size)
+{
 var cityCircle2 = new google.maps.Circle({
     strokeColor: '#0000e6',
     strokeOpacity: 0.8,
-    strokeWeight: 2,
+    strokeWeight: 1,
     fillColor: '#0000e6',
-    fillOpacity: 0.35,
+    fillOpacity: 0.1,
     map: map,
     center: location,
     radius: Math.sqrt(size) * 3500
+    });
+}
+function layer3(location,size)
+{
+var cityCircle2 = new google.maps.Circle({
+    strokeColor: '#0000e6',
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: '#FFF',
+    fillOpacity: 0.1,
+    map: map,
+    center: location,
+    radius: Math.sqrt(size) * 1200
+    });
+}
+function layer4(location,size)
+{
+var cityCircle2 = new google.maps.Circle({
+    strokeColor: '#0000e6',
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: '#006400',
+    fillOpacity: 0.1,
+    map: map,
+    center: location,
+    radius: Math.sqrt(size) * 1000
     });
 }
