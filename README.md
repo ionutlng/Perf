@@ -5,3 +5,5 @@
   Pentru generarea diverselor straturi se poate recurge la date agregate existente in cadrul unor platforme sociale (e.g., Twitter, Facebook). De exemplu, pentru stratul poluare fonica, se pot agrega resurse marcate cu tag-ul "#noise" ori "#smog". Utilizatorii interesati de inchirierea/cumpararea unei locuinte (e.g. apartament, casa, loc de veci etc.) vor putea efectua diverse operatiuni folosind harta pusa la dispozitie: selectarea zonei de interes pentru afisarea optiunilor existente, selectarea diverselor straturi pentru luarea deciziei, filtrare in functie de alte criterii (e.g., pret, suprafata, facilitati). Funcționalitatea va fi expusa si sub forma unui serviciu Web. Optional, se poate utiliza Geolocation API pentru furnizarea de imobile aflate in vecinatatea utilizatorului.
   
   Proiect pentru Tehnologii Web @ Faculty of Computer Science Iasi, realizatori: Prodan Marius-Georgian, Lungeanu Ionut, Patriche Giulio
+
+ Link video demonstativ - https://vimeo.com/221418954
