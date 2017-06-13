@@ -6,6 +6,7 @@ var contentString;
 
 var markers
 var markersArray = [];
+var circles = [];
 var cityCircle;
 var cityCircle2;
 var map;
@@ -52,18 +53,11 @@ function initMap() {
 	});
         
 search();
-
-for (var city in obj)
-	{
-        var center = {
-         lat: parseFloat(obj[city].lat),
-          lng: parseFloat(obj[city].log)
-        };
-     layer1(center,20);
-     layer2(center,30);
-     layer3(center,40);
-     layer4(center,50);
-}
+$('#button1').click(function(){ clickbutton1();})
+$('#button2').click(function(){ clickbutton2();})
+$('#button3').click(function(){ clickbutton3();})
+$('#button4').click(function(){ clickbutton4();})
+$('#button5').click(function(){ clickbutton5();})
     for (var ap in obj2)
 	{
         var center = {
@@ -191,11 +185,18 @@ strokeColor: '#FFF',
 strokeOpacity: 0.1,
 strokeWeight: 1,
 fillColor: '#FF0000',
-fillOpacity: 0.1,
+fillOpacity:  (Math.floor(Math.random() * (70 - size + 1) ) + size)/500,
 map: map,
 center: location,
-radius: Math.sqrt(20) * 2500
+radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
+circles.push(cityCircle);
+}
+function removeAllcircles() {
+  for(var i in circles) {
+    circles[i].setMap(null);
+  }
+  circles = [];
 }
 function layer2(location,size)
 {
@@ -204,11 +205,12 @@ var cityCircle2 = new google.maps.Circle({
     strokeOpacity: 0.8,
     strokeWeight: 1,
     fillColor: '#0000e6',
-    fillOpacity: 0.1,
+    fillOpacity: (Math.floor(Math.random() * (100 - size + 1) ) + size)/250,
     map: map,
     center: location,
-    radius: Math.sqrt(size) * 3500
-    });
+    radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
+});
+circles.push(cityCircle2);
 }
 function layer3(location,size)
 {
@@ -221,7 +223,8 @@ var cityCircle2 = new google.maps.Circle({
     map: map,
     center: location,
     radius: Math.sqrt(size) * 1200
-    });
+});
+circles.push(cityCircle2);
 }
 function layer4(location,size)
 {
@@ -234,5 +237,65 @@ var cityCircle2 = new google.maps.Circle({
     map: map,
     center: location,
     radius: Math.sqrt(size) * 1000
-    });
+});
+circles.push(cityCircle2);
 }
+function clickbutton1()
+{
+    removeAllcircles()
+for (var city in obj)
+	{
+        var center = {
+         lat: parseFloat(obj[city].lat),
+          lng: parseFloat(obj[city].log)
+        };
+     layer1(center,10);
+
+}
+}
+function clickbutton2()
+{
+    removeAllcircles()
+for (var city in obj)
+	{
+        var center = {
+         lat: parseFloat(obj[city].lat),
+          lng: parseFloat(obj[city].log)
+        };
+     layer2(center,20);
+
+}
+}
+function clickbutton3()
+{
+    removeAllcircles()
+for (var city in obj)
+	{
+        var center = {
+         lat: parseFloat(obj[city].lat),
+          lng: parseFloat(obj[city].log)
+        };
+     layer3(center,30);
+
+}
+}
+function clickbutton4()
+{
+    removeAllcircles()
+for (var city in obj)
+	{
+        var center = {
+         lat: parseFloat(obj[city].lat),
+          lng: parseFloat(obj[city].log)
+        };
+     layer4(center,40);
+
+}
+}
+function clickbutton5()
+{
+    removeAllcircles()
+
+
+}
+
