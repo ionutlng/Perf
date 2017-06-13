@@ -4,11 +4,16 @@ var response2;
 var infowindow;
 var contentString;
 
+
 var markers
 var markersArray = [];
-var circles = [];
+
 var cityCircle;
-var cityCircle2;
+var circles = [];
+
+var minvalue = 0;
+var maxvalue;
+
 var map;
 var i;
 var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
@@ -58,6 +63,21 @@ $('#button2').click(function(){ clickbutton2();})
 $('#button3').click(function(){ clickbutton3();})
 $('#button4').click(function(){ clickbutton4();})
 $('#button5').click(function(){ clickbutton5();})
+
+
+$('#buttonmin1').click(function(){ minvalue=1000;console.log(minvalue);})
+$('#buttonmin2').click(function(){ minvalue=50000;})
+$('#buttonmin3').click(function(){ minvalue=100000;})
+
+
+$('#buttonmax1').click(function(){ maxvalue=10000;console.log(maxvalue);filtermap(minvalue,maxvalue);})
+$('#buttonmax2').click(function(){ maxvalue=100000;filtermap(minvalue,maxvalue);})
+$('#buttonmax3').click(function(){ maxvalue=850000;filtermap(minvalue,maxvalue);})
+
+console.log(minvalue);
+
+console.log(maxvalue);
+
     for (var ap in obj2)
 	{
         var center = {
@@ -65,10 +85,11 @@ $('#button5').click(function(){ clickbutton5();})
           lng: parseFloat(obj2[ap].lng)
         };
         var content = obj2[ap].address+obj2[ap].pret+obj2[ap].tip;
-    console.log(obj2[ap].address);
           addMarker(center,obj2[ap].address,obj2[ap].pret,obj2[ap].tip);
 
 }
+if(minvalue!=null && maxvalue!=null)
+    filtermap(minvalue,maxvalue);
 
 }
 function search(){
@@ -200,7 +221,7 @@ function removeAllcircles() {
 }
 function layer2(location,size)
 {
-var cityCircle2 = new google.maps.Circle({
+var cityCircle = new google.maps.Circle({
     strokeColor: '#0000e6',
     strokeOpacity: 0.8,
     strokeWeight: 1,
@@ -210,11 +231,11 @@ var cityCircle2 = new google.maps.Circle({
     center: location,
     radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
-circles.push(cityCircle2);
+circles.push(cityCircle);
 }
 function layer3(location,size)
 {
-var cityCircle2 = new google.maps.Circle({
+var cityCircle = new google.maps.Circle({
     strokeColor: '#0000e6',
     strokeOpacity: 0.8,
     strokeWeight: 1,
@@ -224,11 +245,11 @@ var cityCircle2 = new google.maps.Circle({
     center: location,
     radius: Math.sqrt(size) * 1200
 });
-circles.push(cityCircle2);
+circles.push(cityCircle);
 }
 function layer4(location,size)
 {
-var cityCircle2 = new google.maps.Circle({
+var cityCircle = new google.maps.Circle({
     strokeColor: '#0000e6',
     strokeOpacity: 0.8,
     strokeWeight: 1,
@@ -238,7 +259,7 @@ var cityCircle2 = new google.maps.Circle({
     center: location,
     radius: Math.sqrt(size) * 1000
 });
-circles.push(cityCircle2);
+circles.push(cityCircle);
 }
 function clickbutton1()
 {
@@ -298,4 +319,25 @@ function clickbutton5()
 
 
 }
+function removeAllMarkers() {
+  for(var i in markersArray) {
+    markersArray[i].setMap(null);
+  }
+  markersArray = [];
+}
+function filtermap(min,max)
+{removeAllMarkers();
+ for (var ap in obj2)
+	{
+        if(obj2[ap].pret>=min && obj2[ap].pret<=max)
+        {
+        var center = {
+         lat: parseFloat(obj2[ap].lat),
+          lng: parseFloat(obj2[ap].lng)
+        };
+        var content = obj2[ap].address+obj2[ap].pret+obj2[ap].tip;
+          addMarker(center,obj2[ap].address,obj2[ap].pret,obj2[ap].tip);
+        }
 
+}
+}
