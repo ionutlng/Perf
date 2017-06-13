@@ -199,6 +199,12 @@ function clickMarkerEvent(index,info1,info2,info3) {
 	});
 	infowindow.open(map, markersArray[index]);
 }
+function removeAllcircles() {
+  for(var i in circles) {
+    circles[i].setMap(null);
+  }
+  circles = [];
+}
 function layer1(location,size)
 {
     var cityCircle = new google.maps.Circle({
@@ -206,60 +212,54 @@ strokeColor: '#FFF',
 strokeOpacity: 0.1,
 strokeWeight: 1,
 fillColor: '#FF0000',
-fillOpacity:  (Math.floor(Math.random() * (70 - size + 1) ) + size)/500,
+fillOpacity:  (Math.floor(Math.random() * (70 - size + 1) ) + size)/350,
 map: map,
 center: location,
 radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
 circles.push(cityCircle);
 }
-function removeAllcircles() {
-  for(var i in circles) {
-    circles[i].setMap(null);
-  }
-  circles = [];
-}
 function layer2(location,size)
 {
-var cityCircle = new google.maps.Circle({
-    strokeColor: '#0000e6',
-    strokeOpacity: 0.8,
+	var cityCircle2 = new google.maps.Circle({
+    strokeColor: '#FFF',
+    strokeOpacity: 0.1,
     strokeWeight: 1,
-    fillColor: '#0000e6',
-    fillOpacity: (Math.floor(Math.random() * (100 - size + 1) ) + size)/250,
+    fillColor: '#1a1aff',
+    fillOpacity: (Math.floor(Math.random() * (100 - size + 1) ) + size)/350,
     map: map,
     center: location,
     radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
-circles.push(cityCircle);
+circles.push(cityCircle2);
 }
 function layer3(location,size)
 {
-var cityCircle = new google.maps.Circle({
-    strokeColor: '#0000e6',
-    strokeOpacity: 0.8,
+var cityCircle3 = new google.maps.Circle({
+    strokeColor: '#FFF',
+    strokeOpacity: 0.1,
     strokeWeight: 1,
-    fillColor: '#FFF',
-    fillOpacity: 0.1,
+    fillColor: '#009933',
+    fillOpacity: (Math.floor(Math.random() * (100 - size + 1) ) + size)/350,
     map: map,
     center: location,
-    radius: Math.sqrt(size) * 1200
+    radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
-circles.push(cityCircle);
+circles.push(cityCircle3);
 }
 function layer4(location,size)
 {
-var cityCircle = new google.maps.Circle({
-    strokeColor: '#0000e6',
-    strokeOpacity: 0.8,
+var cityCircle4 = new google.maps.Circle({
+    strokeColor: '#FFF',
+    strokeOpacity: 0.1,
     strokeWeight: 1,
-    fillColor: '#006400',
-    fillOpacity: 0.1,
+    fillColor: '#ffa64d',
+    fillOpacity: (Math.floor(Math.random() * (100 - size + 1) ) + size)/350,
     map: map,
     center: location,
-    radius: Math.sqrt(size) * 1000
+    radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
-circles.push(cityCircle);
+circles.push(cityCircle4);
 }
 function clickbutton1()
 {
@@ -316,8 +316,6 @@ for (var city in obj)
 function clickbutton5()
 {
     removeAllcircles()
-
-
 }
 function removeAllMarkers() {
   for(var i in markersArray) {
