@@ -3,7 +3,7 @@
 $url = "https://search.onboard-apis.com/propertyapi/v1.0.0";
 $resource = "/property";
 $package = "/snapshot?";
-$city = "cityname=Los%20Angeles";
+$city = "cityname=San%20Francisco";
 $type = "&propertytype=APARTMENT";
 $url = $url.$resource.$package.$city.$type;
 $mode ='application/json';
@@ -15,7 +15,8 @@ curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 curl_setopt($ch,CURLOPT_HTTPHEADER,$array_head);
 $response = curl_exec($ch);
 $result = json_decode($response,true);
-for($counter = 0;$counter <= count($result);$counter++)
+
+for($counter = 0;$counter < count($result["property"]);$counter++)
 {
     $lat = $result["property"][$counter]["location"]["latitude"];
     $lng = $result["property"][$counter]["location"]["longitude"];
