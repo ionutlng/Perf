@@ -21,7 +21,7 @@ var ajaxRequest = {
     type: 'GET',
     async: false,
     datatype: 'json',
-    url: '/Perf-master/model/api-orase.php',
+    url: '/Perf/model/api-orase.php',
     success: function(data)
     {
         response = data;
@@ -36,7 +36,7 @@ var ajaxRequest = {
     type: 'GET',
     async: false,
     datatype: 'json',
-    url: '/Perf-master/model/api-apartamente.php',
+    url: '/Perf/model/api-apartamente.php',
     success: function(data)
     {
         response2 = data;
@@ -54,9 +54,10 @@ function initMap() {
     var California = {lat: 37,lng: -120};
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 8,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
 		center: California
 	});
-        
+        map.setTilt(45);
 search();
 $('#button1').click(function(){ clickbutton1();})
 $('#button2').click(function(){ clickbutton2();})
@@ -65,18 +66,14 @@ $('#button4').click(function(){ clickbutton4();})
 $('#button5').click(function(){ clickbutton5();})
 
 
-$('#buttonmin1').click(function(){ minvalue=1000;console.log(minvalue);})
+$('#buttonmin1').click(function(){ minvalue=1000;})
 $('#buttonmin2').click(function(){ minvalue=50000;})
 $('#buttonmin3').click(function(){ minvalue=100000;})
 
 
-$('#buttonmax1').click(function(){ maxvalue=10000;console.log(maxvalue);filtermap(minvalue,maxvalue);})
+$('#buttonmax1').click(function(){ maxvalue=10000;filtermap(minvalue,maxvalue);})
 $('#buttonmax2').click(function(){ maxvalue=100000;filtermap(minvalue,maxvalue);})
 $('#buttonmax3').click(function(){ maxvalue=850000;filtermap(minvalue,maxvalue);})
-
-console.log(minvalue);
-
-console.log(maxvalue);
 
     for (var ap in obj2)
 	{
@@ -88,17 +85,13 @@ console.log(maxvalue);
           addMarker(center,obj2[ap].address,obj2[ap].pret,obj2[ap].tip);
 
 }
-if(minvalue!=null && maxvalue!=null)
-    filtermap(minvalue,maxvalue);
-
 }
 function search(){
     	//SEARCH BAR
 
 	    var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
-        var types = document.getElementById('type-selector');
-        var strictBounds = document.getElementById('strict-bounds-selector');
+
 
         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
@@ -109,16 +102,13 @@ function search(){
         // bounds option in the request.
         autocomplete.bindTo('bounds', map);
 
-        var infowindow = new google.maps.InfoWindow();
-        var infowindowContent = document.getElementById('infowindow-content');
-        infowindow.setContent(infowindowContent);
         var marker = new google.maps.Marker({
           map: map,
           anchorPoint: new google.maps.Point(0, -29)
         });
 
         autocomplete.addListener('place_changed', function() {
-          infowindow.close();
+
           marker.setVisible(false);
           var place = autocomplete.getPlace();
           if (!place.geometry) {
@@ -133,7 +123,7 @@ function search(){
             map.fitBounds(place.geometry.viewport);
           } else {
             map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
+            map.setZoom(17);  
           }
           marker.setPosition(place.geometry.location);
           marker.setVisible(true);
@@ -147,10 +137,6 @@ function search(){
             ].join(' ');
           }
 
-          infowindowContent.children['place-icon'].src = place.icon;
-          infowindowContent.children['place-name'].textContent = place.name;
-          infowindowContent.children['place-address'].textContent = address;
-          infowindow.open(map, marker);
         });
 }
 
@@ -182,7 +168,7 @@ function clickMarkerEvent(index,info1,info2,info3) {
 	contentString = '<div id="content">' +
 	'<div id="siteNotice">' +
 	'</div>' +
-	'<h1 id="firstHeading" class="firstHeading">Apartaments Info</h1>' +
+	'<h1 id="firstHeading" class="firstHeading">Apartament Info</h1>' +
 	'<div id="bodyContent">' +
 	'<b>Location:</b> <p>' + markersArray[index].getPosition() + '</p>' + 
     '<b>Title:</b><p>' + info3+'</p>'+
@@ -195,7 +181,7 @@ function clickMarkerEvent(index,info1,info2,info3) {
 	
 	infowindow = new google.maps.InfoWindow({
 		content: contentString,
-		maxWidth: 200
+		maxWidth: 300
 	});
 	infowindow.open(map, markersArray[index]);
 }
@@ -221,7 +207,8 @@ circles.push(cityCircle);
 }
 function layer2(location,size)
 {
-	var cityCircle2 = new google.maps.Circle({
+
+var cityCircle = new google.maps.Circle({
     strokeColor: '#FFF',
     strokeOpacity: 0.1,
     strokeWeight: 1,
@@ -231,11 +218,12 @@ function layer2(location,size)
     center: location,
     radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
-circles.push(cityCircle2);
+circles.push(cityCircle);
 }
 function layer3(location,size)
 {
-var cityCircle3 = new google.maps.Circle({
+var cityCircle = new google.maps.Circle({
+
     strokeColor: '#FFF',
     strokeOpacity: 0.1,
     strokeWeight: 1,
@@ -245,11 +233,11 @@ var cityCircle3 = new google.maps.Circle({
     center: location,
     radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
 });
-circles.push(cityCircle3);
+circles.push(cityCircle);
 }
 function layer4(location,size)
 {
-var cityCircle4 = new google.maps.Circle({
+var cityCircle = new google.maps.Circle({
     strokeColor: '#FFF',
     strokeOpacity: 0.1,
     strokeWeight: 1,
@@ -257,9 +245,10 @@ var cityCircle4 = new google.maps.Circle({
     fillOpacity: (Math.floor(Math.random() * (100 - size + 1) ) + size)/350,
     map: map,
     center: location,
-    radius: (Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
+    radius:(Math.floor(Math.random() * (100 - size + 1) ) + size) * 250
+
 });
-circles.push(cityCircle4);
+circles.push(cityCircle);
 }
 function clickbutton1()
 {
